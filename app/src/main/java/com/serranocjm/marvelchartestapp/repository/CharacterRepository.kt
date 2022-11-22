@@ -1,0 +1,3 @@
+package com.serranocjm.marvelchartestapp.repository
+
+interface CharacterRepository
