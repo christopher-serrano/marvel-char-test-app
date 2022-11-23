@@ -1,8 +1,10 @@
 package com.serranocjm.marvelchartestapp.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.serranocjm.marvelchartestapp.data.model.character.Hero
 import com.serranocjm.marvelchartestapp.repository.CharacterRepository
+import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -19,10 +21,16 @@ class CharacterViewModel : BaseViewModel(), KoinComponent {
 
     // Get Hero List
     fun getHeroList(offset: Int) {
+        viewModelScope.launch {
+            getHeroListAsync(offset)
+        }
     }
 
     // Get Hero etail
     fun getHeroDetail(id: Int) {
+        viewModelScope.launch {
+            getHeroDetailAsync(id)
+        }
     }
 
     // Private suspend functions
