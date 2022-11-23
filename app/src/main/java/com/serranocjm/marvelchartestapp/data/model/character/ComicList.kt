@@ -8,7 +8,7 @@ data class ComicList(
     @SerializedName("collectionURI")
     val collectionURI: String?,
     @SerializedName("items")
-    val items: List<ComicSummary?>?,
+    val items: List<ComicSummary>?,
     @SerializedName("returned")
     val returned: Int?
 )

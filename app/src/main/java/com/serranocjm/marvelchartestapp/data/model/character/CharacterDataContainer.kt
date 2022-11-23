@@ -12,5 +12,5 @@ data class CharacterDataContainer(
     @SerializedName("count")
     val count: Int?,
     @SerializedName("results")
-    val results: List<Hero?>?
+    val results: List<Hero>?
 )

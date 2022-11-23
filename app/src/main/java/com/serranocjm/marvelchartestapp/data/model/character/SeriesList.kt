@@ -8,7 +8,7 @@ data class SeriesList(
     @SerializedName("collectionURI")
     val collectionURI: String?,
     @SerializedName("items")
-    val items: List<SeriesSummary?>?,
+    val items: List<SeriesSummary>?,
     @SerializedName("returned")
     val returned: Int?
 )

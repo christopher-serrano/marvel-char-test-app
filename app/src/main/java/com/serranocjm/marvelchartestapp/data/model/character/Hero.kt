@@ -24,5 +24,5 @@ data class Hero(
     @SerializedName("events")
     val events: EventList?,
     @SerializedName("urls")
-    val urls: List<Url?>?
+    val urls: List<Url>?
 )

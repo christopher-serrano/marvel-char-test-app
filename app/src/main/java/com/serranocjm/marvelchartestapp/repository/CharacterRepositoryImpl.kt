@@ -11,7 +11,7 @@ class CharacterRepositoryImpl : CharacterRepository, KoinComponent {
 
     private val apiClient = ApiClient.invoke()
 
-    override suspend fun getCharacterList(offset: Int): List<Hero?>? = withContext(Dispatchers.IO) {
+    override suspend fun getCharacterList(offset: Int): List<Hero>? = withContext(Dispatchers.IO) {
         val response = apiClient.getCharacterList(QUERY_LIMIT, offset)
         response.body()?.data?.results
     }
