@@ -2,7 +2,7 @@ package com.serranocjm.marvelchartestapp.data.model.character
 
 import com.google.gson.annotations.SerializedName
 
-data class Character(
+data class Hero(
     @SerializedName("id")
     val id: Int?,
     @SerializedName("name")
