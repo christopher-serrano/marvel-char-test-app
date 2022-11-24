@@ -16,7 +16,7 @@ abstract class PreferenceDelegate<T> : ReadWriteProperty<Any, T>, KoinComponent 
         private const val FIRST_TIME_DIALOG = "FIRST_TIME_DIALOG"
         var firstTimeDialog by booleanPreferenceDelegate(FIRST_TIME_DIALOG)
         private const val REQUEST_OFFSET_VALUE = "REQUEST_OFFSET_VALUE"
-        var requestOffset by intPreferenceDelegate(REQUEST_OFFSET_VALUE)
+        var requestOffsetPref by intPreferenceDelegate(REQUEST_OFFSET_VALUE)
     }
 
     protected val sharedPreferences: SharedPreferences by inject()
