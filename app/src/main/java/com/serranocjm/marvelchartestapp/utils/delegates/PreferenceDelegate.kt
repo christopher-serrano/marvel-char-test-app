@@ -15,9 +15,22 @@ abstract class PreferenceDelegate<T> : ReadWriteProperty<Any, T>, KoinComponent 
     companion object {
         private const val FIRST_TIME_DIALOG = "FIRST_TIME_DIALOG"
         var firstTimeDialog by booleanPreferenceDelegate(FIRST_TIME_DIALOG)
+        private const val REQUEST_OFFSET_VALUE = "REQUEST_OFFSET_VALUE"
+        var requestOffset by intPreferenceDelegate(REQUEST_OFFSET_VALUE)
     }
 
     protected val sharedPreferences: SharedPreferences by inject()
+}
+
+class intPreferenceDelegate(
+    private val key: String,
+    private val defaultValue: Int = 0
+) : PreferenceDelegate<Int>() {
+    override fun getValue(thisRef: Any, property: KProperty<*>) =
+        sharedPreferences.getInt(key, defaultValue)
+
+    override fun setValue(thisRef: Any, property: KProperty<*>, value: Int) =
+        sharedPreferences.edit { putInt(key, value) }
 }
 
 class floatPreferenceDelegate(
