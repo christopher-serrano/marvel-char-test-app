@@ -2,10 +2,12 @@ package com.serranocjm.marvelchartestapp.utils.general
 
 import android.content.Context
 import android.view.View
+import android.view.animation.AccelerateInterpolator
 import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import com.serranocjm.marvelchartestapp.utils.custom.OnOneOffClickListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -57,12 +59,56 @@ fun Context.toastShort(text: CharSequence) = Toast.makeText(this, text, Toast.LE
 
 // View-related extensions
 
+fun View.makeVisible() {
+    this.visibility = View.VISIBLE
+}
+
 fun View.makeInvisible() {
     this.visibility = View.INVISIBLE
 }
 
+fun View.makeGone() {
+    this.visibility = View.GONE
+}
+
 fun View.setOpacity(percent: Int) {
     this.background.alpha = percent
+}
+
+fun View.isVisible() = visibility == View.VISIBLE
+
+fun View.isViewGone() = visibility == View.GONE
+
+fun View.makeVisibleAlpha(duration: Long, endAction: () -> Unit = {}) {
+    if (!isVisible()) makeVisible()
+    if (alpha != 0f) alpha = 0f
+    animate().alpha(1f).setDuration(duration).setInterpolator(AccelerateInterpolator())
+        .withEndAction {
+            endAction.invoke()
+        }
+}
+
+fun View.makeInvisibleAlpha(duration: Long, endAction: () -> Unit = {}) {
+    animate().alpha(0f).setDuration(duration).setInterpolator(AccelerateInterpolator())
+        .withEndAction {
+            endAction.invoke()
+        }
+}
+
+fun View.makeGoneAlpha(duration: Long, endAction: () -> Unit = {}) {
+    animate().alpha(0f).setDuration(duration).setInterpolator(AccelerateInterpolator())
+        .withEndAction {
+            endAction.invoke()
+            makeGone()
+        }
+}
+
+fun View.setOneOffClickListener(action: () -> Unit) {
+    setOnClickListener(object : OnOneOffClickListener() {
+        override fun onSingleClick(v: View?) {
+            action.invoke()
+        }
+    })
 }
 
 // Other extensions
