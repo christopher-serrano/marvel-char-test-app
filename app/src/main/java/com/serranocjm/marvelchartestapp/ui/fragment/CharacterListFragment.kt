@@ -13,6 +13,7 @@ import com.serranocjm.marvelchartestapp.ui.adapter.base.ItemModel
 import com.serranocjm.marvelchartestapp.ui.adapter.item.model.HeroItemModel
 import com.serranocjm.marvelchartestapp.ui.adapter.type.factory.HeroTypeFactoryImpl
 import com.serranocjm.marvelchartestapp.ui.viewmodel.CharacterViewModel
+import com.serranocjm.marvelchartestapp.utils.delegates.PreferenceDelegate.Companion.requestOffsetPref
 import com.serranocjm.marvelchartestapp.utils.general.toastShort
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -29,7 +30,6 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
     private val binding get() = _binding!!
 
     // Variables
-    private var offset: Int? = null
     private var characterList: List<Hero>? = null
     private var characterItemModelList: List<ItemModel>? = null
     private var heroListAdapter: DynamicAdapter? = null
@@ -49,7 +49,6 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
 
     override fun onResume() {
         super.onResume()
-        setOffset()
         loadData()
     }
 
@@ -61,29 +60,18 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
     // Viewmodel functions
     private fun observeViewModel() = characterViewModel.run {
         loadingState.observe(viewLifecycleOwner) {
-            Log.d("TAGTAG", "loading!")
-        }
-        offsetValue.observe(viewLifecycleOwner) {
-            offset = it
+            Log.d("TAGTAG", "Loading...")
         }
         heroList.observe(viewLifecycleOwner) {
             characterList = it
-            characterList?.let {
+            characterList?.let { list ->
                 setUpDynamicAdapter()
             }
         }
     }
 
     private fun loadData() {
-        offset?.let {
-            characterViewModel.getHeroList(it)
-        }
-    }
-
-    private fun setOffset() {
-        if (offset == null) {
-            characterViewModel.setRequestOffset(0)
-        }
+        characterViewModel.getHeroList(requestOffsetPref)
     }
 
     // Dynamic Adapter

@@ -17,15 +17,7 @@ class CharacterViewModel : BaseViewModel(), KoinComponent {
     val heroList = MutableLiveData<List<Hero>?>()
     val heroDetail = MutableLiveData<Hero?>()
 
-    // Offset control variable
-    var offsetValue = MutableLiveData<Int?>()
-
     // Public functions (to be accessed from the view)
-
-    // Set offset valur
-    fun setRequestOffset(offset: Int) {
-        offsetValue.postValue(offset)
-    }
 
     // Get Hero List
     fun getHeroList(offset: Int) {
