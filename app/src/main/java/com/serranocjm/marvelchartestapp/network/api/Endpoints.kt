@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface Endpoints {
 
-    @GET("characters/")
+    @GET("characters")
     suspend fun getCharacterList(
         @Query(value = "limit") limit: Int,
         @Query(value = "offset") offset: Int

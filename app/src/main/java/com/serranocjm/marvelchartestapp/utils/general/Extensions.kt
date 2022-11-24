@@ -13,6 +13,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.BuildConfig
 import java.lang.reflect.Type
+import java.security.MessageDigest
+import kotlin.text.Charsets.UTF_8
 
 /**
  * Custom extensions file
@@ -117,3 +119,6 @@ fun delayAction(delay: Long, action: () -> Unit) = CoroutineScope(Dispatchers.Ma
     kotlinx.coroutines.delay(delay)
     action.invoke()
 }
+
+fun String.toMd5(): ByteArray = MessageDigest.getInstance("MD5").digest(this.toByteArray(UTF_8))
+fun ByteArray.toHex() = joinToString(separator = "") { byte -> "%02x".format(byte) }
