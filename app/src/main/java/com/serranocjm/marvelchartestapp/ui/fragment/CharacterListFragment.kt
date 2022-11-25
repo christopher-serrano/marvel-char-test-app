@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.serranocjm.marvelchartestapp.data.model.character.Hero
 import com.serranocjm.marvelchartestapp.databinding.FragmentCharacterListBinding
@@ -33,6 +35,7 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
     private var characterList: List<Hero>? = null
     private var characterItemModelList: List<ItemModel>? = null
     private var heroListAdapter: DynamicAdapter? = null
+    private lateinit var navController: NavController
 
     // Fragment functions
     override fun onCreateView(
@@ -49,12 +52,19 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
 
     override fun onResume() {
         super.onResume()
+        initValues()
         loadData()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    // Init values
+
+    private fun initValues() {
+        navController = findNavController()
     }
 
     // Viewmodel functions
@@ -105,7 +115,16 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
         val hero: HeroItemModel = item as HeroItemModel
 
         when (action) {
-            "goto_hero_detail" -> requireActivity().toastShort("${hero.model.id} - ${hero.model.name}")
+            "goto_hero_detail" -> {
+                requireActivity().toastShort("${hero.model.id} - ${hero.model.name}")
+                hero.model.id?.let {
+                    navController.navigate(
+                        CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailFragment(
+                            it
+                        )
+                    )
+                }
+            }
             else -> {
                 Log.d("TAGTAG", "Other action.")
             }
