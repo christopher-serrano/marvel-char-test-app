@@ -8,7 +8,7 @@ data class CommonResource(
     @SerializedName("collectionURI")
     val collectionURI: String?,
     @SerializedName("items")
-    val items: List<CommonResourceItem>?,
+    val items: List<CommonResourceDetail>?,
     @SerializedName("returned")
     val returned: Int?
 )
