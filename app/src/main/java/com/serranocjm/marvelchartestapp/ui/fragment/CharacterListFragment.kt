@@ -61,14 +61,13 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
         _binding = null
     }
 
-    // Init values
+    // Base frament functions
 
-    private fun initValues() {
+    override fun initValues() {
         navController = findNavController()
     }
 
-    // Viewmodel functions
-    private fun observeViewModel() = characterViewModel.run {
+    override fun observeViewModel() = characterViewModel.run {
         loadingState.observe(viewLifecycleOwner) {
             Log.d("TAGTAG", "Loading...")
         }
@@ -80,7 +79,7 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
         }
     }
 
-    private fun loadData() {
+    override fun loadData() {
         characterViewModel.getHeroList(requestOffsetPref)
     }
 
