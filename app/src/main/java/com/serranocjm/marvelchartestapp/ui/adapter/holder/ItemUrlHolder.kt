@@ -6,7 +6,7 @@ import com.serranocjm.marvelchartestapp.ui.adapter.base.ItemModel
 import com.serranocjm.marvelchartestapp.ui.adapter.item.model.UrlItemModel
 import com.serranocjm.marvelchartestapp.utils.custom.ImageLoader
 
-class UrlHolder(val view: View, imageLoader: ImageLoader) :
+class ItemUrlHolder(val view: View, imageLoader: ImageLoader) :
     DynamicAdapterViewHolder<UrlItemModel>(view, imageLoader) {
     override fun bind(item: UrlItemModel, position: Int, onClick: (ItemModel, String) -> Unit) {
         TODO("Not yet implemented")

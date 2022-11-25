@@ -6,7 +6,7 @@ import com.serranocjm.marvelchartestapp.ui.adapter.base.ItemModel
 import com.serranocjm.marvelchartestapp.ui.adapter.item.model.CommonResourceItemModel
 import com.serranocjm.marvelchartestapp.utils.custom.ImageLoader
 
-class CommonResourceHolder(val view: View, imageLoader: ImageLoader) :
+class ItemCommonResourceHolder(val view: View, imageLoader: ImageLoader) :
     DynamicAdapterViewHolder<CommonResourceItemModel>(view, imageLoader) {
     override fun bind(
         item: CommonResourceItemModel,
