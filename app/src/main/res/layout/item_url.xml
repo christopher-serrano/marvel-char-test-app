@@ -9,8 +9,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/dimen_8"
-        android:layout_marginTop="@dimen/dimen_2"
-        android:layout_marginBottom="@dimen/dimen_2"
+        android:layout_marginTop="@dimen/dimen_4"
+        android:layout_marginBottom="@dimen/dimen_4"
         android:drawablePadding="@dimen/dimen_4"
         android:text="URL Type"
         app:drawableStartCompat="@drawable/ic_list_bullet"
@@ -24,13 +24,15 @@
         android:id="@+id/tvUrlValue"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/dimen_2"
+        android:layout_marginStart="@dimen/dimen_8"
+        android:layout_marginTop="@dimen/dimen_4"
         android:layout_marginEnd="@dimen/dimen_8"
+        android:layout_marginBottom="@dimen/dimen_4"
+        android:ellipsize="end"
         android:text="URL Value"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvUrlType"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.7" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
