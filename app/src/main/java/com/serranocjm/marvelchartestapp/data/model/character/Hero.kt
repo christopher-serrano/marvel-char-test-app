@@ -16,13 +16,13 @@ data class Hero(
     @SerializedName("resourceURI")
     val resourceURI: String?,
     @SerializedName("comics")
-    val comics: ComicList?,
+    val comics: CommonResourceDetail?,
     @SerializedName("series")
-    val series: SeriesList?,
+    val series: CommonResourceDetail?,
     @SerializedName("stories")
-    val stories: StoryList?,
+    val stories: CommonResourceDetail?,
     @SerializedName("events")
-    val events: EventList?,
+    val events: CommonResourceDetail?,
     @SerializedName("urls")
     val urls: List<Url>?
 )

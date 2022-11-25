@@ -2,7 +2,7 @@ package com.serranocjm.marvelchartestapp.data.model.character
 
 import com.google.gson.annotations.SerializedName
 
-data class StorySummary(
+data class CommonResourceItem(
     @SerializedName("resourceURI")
     val resourceURI: String?,
     @SerializedName("name")
