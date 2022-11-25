@@ -3,4 +3,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hero_list_title">List of Heroes</string>
+    <string name="hero_name_title">Hero</string>
 </resources>
