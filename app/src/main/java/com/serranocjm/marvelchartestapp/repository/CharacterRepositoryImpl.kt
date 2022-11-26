@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import com.serranocjm.marvelchartestapp.data.model.character.Hero
 import com.serranocjm.marvelchartestapp.network.api.ApiClient
 import com.serranocjm.marvelchartestapp.repository.paging.HeroListPagingSource
+import com.serranocjm.marvelchartestapp.ui.adapter.item.model.HeroItemModel
 import com.serranocjm.marvelchartestapp.utils.general.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -30,7 +31,7 @@ class CharacterRepositoryImpl : CharacterRepository, KoinComponent {
         response.body()?.data?.results?.get(0)
     }
 
-    override fun getCharacterListFlow(offset: Int): Flow<PagingData<Hero>> =
+    override fun getCharacterListFlow(offset: Int): Flow<PagingData<HeroItemModel>> =
         Pager(
             PagingConfig(
                 pageSize = offset,

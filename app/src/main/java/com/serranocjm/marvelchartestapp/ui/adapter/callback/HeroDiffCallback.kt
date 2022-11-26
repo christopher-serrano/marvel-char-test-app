@@ -1,21 +1,16 @@
 package com.serranocjm.marvelchartestapp.ui.adapter.callback
 
-import com.serranocjm.marvelchartestapp.ui.adapter.base.BaseDiffCallback
-import com.serranocjm.marvelchartestapp.ui.adapter.base.ItemModel
+import androidx.recyclerview.widget.DiffUtil
 import com.serranocjm.marvelchartestapp.ui.adapter.item.model.HeroItemModel
 
 object HeroDiffCallback {
-    fun heroModelCallback() = object : BaseDiffCallback() {
-        override fun areItemsTheSame(oldItem: ItemModel, newItem: ItemModel): Boolean {
-            return if (oldItem is HeroItemModel && newItem is HeroItemModel) {
-                oldItem.model.id == newItem.model.id
-            } else false
+    fun heroModelCallback() = object : DiffUtil.ItemCallback<HeroItemModel>() {
+        override fun areItemsTheSame(oldItem: HeroItemModel, newItem: HeroItemModel): Boolean {
+            return oldItem.model.id == newItem.model.id
         }
 
-        override fun areContentsTheSame(oldItem: ItemModel, newItem: ItemModel): Boolean {
-            return if (oldItem is HeroItemModel && newItem is HeroItemModel) {
-                oldItem.model == newItem.model
-            } else false
+        override fun areContentsTheSame(oldItem: HeroItemModel, newItem: HeroItemModel): Boolean {
+            return oldItem.model == newItem.model
         }
     }
 }

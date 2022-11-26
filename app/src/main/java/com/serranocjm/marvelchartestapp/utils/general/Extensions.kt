@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -80,6 +81,10 @@ fun View.setOpacity(percent: Int) {
 fun View.isVisible() = visibility == View.VISIBLE
 
 fun View.isViewGone() = visibility == View.GONE
+
+fun View.toggleVisibility(isVisible: Boolean) {
+    this.isVisible = isVisible
+}
 
 fun View.makeVisibleAlpha(duration: Long, endAction: () -> Unit = {}) {
     if (!isVisible()) makeVisible()

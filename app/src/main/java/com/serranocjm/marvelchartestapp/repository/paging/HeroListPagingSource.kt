@@ -2,26 +2,26 @@ package com.serranocjm.marvelchartestapp.repository.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.serranocjm.marvelchartestapp.data.model.character.Hero
 import com.serranocjm.marvelchartestapp.repository.CharacterRepository
+import com.serranocjm.marvelchartestapp.ui.adapter.item.model.HeroItemModel
 import com.serranocjm.marvelchartestapp.utils.general.Constants
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import retrofit2.HttpException
 
-class HeroListPagingSource : PagingSource<Int, Hero>(), KoinComponent {
+class HeroListPagingSource : PagingSource<Int, HeroItemModel>(), KoinComponent {
 
     private val characterRepository: CharacterRepository by inject()
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Hero> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, HeroItemModel> {
         return try {
             val currentPage: Int = params.key ?: 0
             val data =
                 characterRepository.getCharacterList(currentPage) // In this case, the currentPage is the offset, which should be X amount of results per page
-            val responseData = mutableListOf<Hero>()
+            val responseData = mutableListOf<HeroItemModel>()
 
             data?.forEach { item ->
-                responseData.add(item)
+                responseData.add(HeroItemModel((item)))
             }
 
             LoadResult.Page(
@@ -36,7 +36,7 @@ class HeroListPagingSource : PagingSource<Int, Hero>(), KoinComponent {
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, Hero>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, HeroItemModel>): Int? {
         return null
     }
 }
