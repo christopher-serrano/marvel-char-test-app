@@ -1,5 +1,7 @@
 package com.serranocjm.marvelchartestapp.ui.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -126,9 +128,8 @@ class CharacterDetailFragment : BaseFragment() {
             }
             hero.comics?.let {
                 comicsListAdapter = getDynamicAdapter(
-                    getCommonResourceListForAdapter(it.items).toMutableList(),
-                    onItemClick
-                )
+                    getCommonResourceListForAdapter(it.items).toMutableList()
+                ) { _, _ -> }
                 binding.rvComicList.apply {
                     adapter = comicsListAdapter
                     layoutManager = LinearLayoutManager(requireActivity())
@@ -137,9 +138,8 @@ class CharacterDetailFragment : BaseFragment() {
             }
             hero.stories?.let {
                 storiesListAdapter = getDynamicAdapter(
-                    getCommonResourceListForAdapter(it.items).toMutableList(),
-                    onItemClick
-                )
+                    getCommonResourceListForAdapter(it.items).toMutableList()
+                ) { _, _ -> }
                 binding.rvStoryList.apply {
                     adapter = storiesListAdapter
                     layoutManager = LinearLayoutManager(requireActivity())
@@ -148,9 +148,9 @@ class CharacterDetailFragment : BaseFragment() {
             }
             hero.events?.let {
                 eventsListAdapter = getDynamicAdapter(
-                    getCommonResourceListForAdapter(it.items).toMutableList(),
-                    onItemClick
-                )
+                    getCommonResourceListForAdapter(it.items).toMutableList()
+
+                ) { _, _ -> }
                 binding.rvEventList.apply {
                     adapter = eventsListAdapter
                     layoutManager = LinearLayoutManager(requireActivity())
@@ -159,9 +159,8 @@ class CharacterDetailFragment : BaseFragment() {
             }
             hero.series?.let {
                 seriesListAdapter = getDynamicAdapter(
-                    getCommonResourceListForAdapter(it.items).toMutableList(),
-                    onItemClick
-                )
+                    getCommonResourceListForAdapter(it.items).toMutableList()
+                ) { _, _ -> }
                 binding.rvSeriesList.apply {
                     adapter = seriesListAdapter
                     layoutManager = LinearLayoutManager(requireActivity())
@@ -201,5 +200,17 @@ class CharacterDetailFragment : BaseFragment() {
     }
 
     //
-    private val onItemClick: (ItemModel, String) -> Unit = { item, action -> }
+    private val onItemClick: (ItemModel, String) -> Unit = { item, action ->
+        val model = item as UrlItemModel
+
+        when (action) {
+            "goto_url" -> {
+                val intent = Intent(Intent.ACTION_VIEW).setData(Uri.parse(model.model.url))
+                requireActivity().startActivity(intent)
+            }
+            else -> {
+                Log.d("TAGTAG", "Empty action.")
+            }
+        }
+    }
 }

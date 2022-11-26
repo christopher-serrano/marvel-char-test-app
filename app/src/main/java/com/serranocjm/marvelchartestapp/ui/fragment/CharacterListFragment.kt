@@ -73,7 +73,7 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
         }
         heroList.observe(viewLifecycleOwner) {
             characterList = it
-            characterList?.let { list ->
+            characterList?.apply {
                 setUpDynamicAdapter()
             }
         }
