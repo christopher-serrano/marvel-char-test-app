@@ -78,9 +78,24 @@
             android:id="@+id/clUrlListContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:layout_marginBottom="@dimen/dimen_4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/vThumbnailSeparator">
+
+            <TextView
+                android:id="@+id/tvUrlLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8"
+                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_marginEnd="@dimen/dimen_8"
+                android:layout_marginBottom="@dimen/dimen_4"
+                android:text="URl List"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvUrlList"
@@ -91,9 +106,8 @@
                 android:paddingStart="@dimen/dimen_16"
                 android:paddingEnd="@dimen/dimen_16"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUrlLabel"
                 tools:listitem="@layout/item_url" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -102,9 +116,24 @@
             android:id="@+id/clComicListcontainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:layout_marginBottom="@dimen/dimen_4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/clUrlListContainer">
+
+            <TextView
+                android:id="@+id/tvComicLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8"
+                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_marginEnd="@dimen/dimen_8"
+                android:layout_marginBottom="@dimen/dimen_4"
+                android:text="Comics:"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvComicList"
@@ -115,9 +144,8 @@
                 android:paddingStart="@dimen/dimen_16"
                 android:paddingEnd="@dimen/dimen_16"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvComicLabel"
                 tools:listitem="@layout/item_common_resource" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -126,9 +154,24 @@
             android:id="@+id/clStoryListcontainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:layout_marginBottom="@dimen/dimen_4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/clComicListcontainer">
+
+            <TextView
+                android:id="@+id/tvStoriesLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8"
+                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_marginEnd="@dimen/dimen_8"
+                android:layout_marginBottom="@dimen/dimen_4"
+                android:text="Stories:"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvStoryList"
@@ -139,9 +182,8 @@
                 android:paddingStart="@dimen/dimen_16"
                 android:paddingEnd="@dimen/dimen_16"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvStoriesLabel"
                 tools:listitem="@layout/item_common_resource" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -150,9 +192,37 @@
             android:id="@+id/clEventListcontainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:layout_marginBottom="@dimen/dimen_4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/clStoryListcontainer">
+
+            <TextView
+                android:id="@+id/tvEventsLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8"
+                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_marginEnd="@dimen/dimen_8"
+                android:layout_marginBottom="@dimen/dimen_4"
+                android:text="Stories:"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvEventList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                android:paddingStart="@dimen/dimen_16"
+                android:paddingEnd="@dimen/dimen_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEventsLabel"
+                tools:listitem="@layout/item_common_resource" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -160,9 +230,24 @@
             android:id="@+id/clSeriesListcontainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:layout_marginBottom="@dimen/dimen_4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/clEventListcontainer">
+
+            <TextView
+                android:id="@+id/tvSeriesLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8"
+                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_marginEnd="@dimen/dimen_8"
+                android:layout_marginBottom="@dimen/dimen_4"
+                android:text="Stories:"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvSeriesList"
@@ -173,9 +258,8 @@
                 android:paddingStart="@dimen/dimen_16"
                 android:paddingEnd="@dimen/dimen_16"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSeriesLabel"
                 tools:listitem="@layout/item_common_resource" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
