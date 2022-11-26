@@ -17,6 +17,6 @@ class ItemCommonResourceHolder(val view: View, imageLoader: ImageLoader) :
         position: Int,
         onClick: (ItemModel, String) -> Unit
     ) {
-        TODO("Not yet implemented")
+        binding.tvItemValue.text = item.model.name
     }
 }

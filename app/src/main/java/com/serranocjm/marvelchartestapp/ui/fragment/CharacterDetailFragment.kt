@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.serranocjm.marvelchartestapp.R
 import com.serranocjm.marvelchartestapp.data.model.character.CommonResourceDetail
 import com.serranocjm.marvelchartestapp.data.model.character.Hero
@@ -55,6 +56,7 @@ class CharacterDetailFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
+        initValues()
         loadData()
     }
 
@@ -109,30 +111,40 @@ class CharacterDetailFragment : BaseFragment() {
             hero.urls?.let {
                 urlListAdapter =
                     getDynamicAdapter(getUrlListForAdapter(it).toMutableList(), onItemClick)
+                binding.rvUrlList.adapter = urlListAdapter
+                binding.rvUrlList.layoutManager = LinearLayoutManager(requireActivity())
             }
             hero.comics?.let {
                 comicsListAdapter = getDynamicAdapter(
                     getCommonResourceListForAdapter(it.items).toMutableList(),
                     onItemClick
                 )
+                binding.rvComicList.adapter = comicsListAdapter
+                binding.rvComicList.layoutManager = LinearLayoutManager(requireActivity())
             }
             hero.stories?.let {
                 storiesListAdapter = getDynamicAdapter(
                     getCommonResourceListForAdapter(it.items).toMutableList(),
                     onItemClick
                 )
+                binding.rvStoryList.adapter = storiesListAdapter
+                binding.rvStoryList.layoutManager = LinearLayoutManager(requireActivity())
             }
             hero.events?.let {
                 eventsListAdapter = getDynamicAdapter(
                     getCommonResourceListForAdapter(it.items).toMutableList(),
                     onItemClick
                 )
+                binding.rvEventList.adapter = eventsListAdapter
+                binding.rvEventList.layoutManager = LinearLayoutManager(requireActivity())
             }
             hero.series?.let {
                 seriesListAdapter = getDynamicAdapter(
                     getCommonResourceListForAdapter(it.items).toMutableList(),
                     onItemClick
                 )
+                binding.rvSeriesList.adapter = seriesListAdapter
+                binding.rvSeriesList.layoutManager = LinearLayoutManager(requireActivity())
             }
         }
     }
