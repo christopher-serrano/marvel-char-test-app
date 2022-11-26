@@ -4,4 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hero_list_title">List of Heroes</string>
     <string name="hero_name_title">Hero</string>
+
+    <string name="hero_img_attr">Placeholder</string>
+    <string name="lorem_ipsum_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc congue nisi vitae suscipit tellus mauris a. Vitae tortor condimentum lacinia quis vel eros donec ac odio. Lacus laoreet non curabitur gravida arcu ac. Auctor augue mauris augue neque gravida in. Nisl condimentum id venenatis a condimentum vitae sapien. Pulvinar mattis nunc sed blandit. Aliquet risus feugiat in ante. Quam vulputate dignissim suspendisse in est. Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Blandit libero volutpat sed cras ornare. Volutpat diam ut venenatis tellus in. Nullam ac tortor vitae purus faucibus.</string>
 </resources>
