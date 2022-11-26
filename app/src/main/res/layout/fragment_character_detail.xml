@@ -59,6 +59,7 @@
             android:layout_marginEnd="@dimen/dimen_8"
             android:layout_marginBottom="@dimen/dimen_4"
             android:text="@string/lorem_ipsum_1"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/vThumbnailSeparator"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -80,6 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_4"
             android:layout_marginBottom="@dimen/dimen_4"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/vThumbnailSeparator">
@@ -118,6 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_4"
             android:layout_marginBottom="@dimen/dimen_4"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/clUrlListContainer">
@@ -156,6 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_4"
             android:layout_marginBottom="@dimen/dimen_4"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/clComicListcontainer">
@@ -194,6 +198,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_4"
             android:layout_marginBottom="@dimen/dimen_4"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/clStoryListcontainer">
@@ -232,6 +237,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_4"
             android:layout_marginBottom="@dimen/dimen_4"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/clEventListcontainer">
@@ -244,7 +250,7 @@
                 android:layout_marginTop="@dimen/dimen_4"
                 android:layout_marginEnd="@dimen/dimen_8"
                 android:layout_marginBottom="@dimen/dimen_4"
-                android:text="Stories:"
+                android:text="Series:"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -18,6 +18,7 @@ import com.serranocjm.marvelchartestapp.ui.adapter.item.model.CommonResourceDeta
 import com.serranocjm.marvelchartestapp.ui.adapter.item.model.UrlItemModel
 import com.serranocjm.marvelchartestapp.ui.adapter.type.factory.HeroDetailTypeFactoryImpl
 import com.serranocjm.marvelchartestapp.ui.viewmodel.CharacterViewModel
+import com.serranocjm.marvelchartestapp.utils.general.makeVisible
 import com.serranocjm.marvelchartestapp.utils.general.toastLong
 import org.koin.core.component.inject
 
@@ -94,6 +95,12 @@ class CharacterDetailFragment : BaseFragment() {
     private fun showData() {
         characterDetail?.let { hero ->
             binding.tvHeroName.text = hero.name
+            hero.description?.let {
+                binding.tvDescription.apply {
+                    text = it
+                    makeVisible()
+                }
+            }
             hero.thumbnail?.let { image ->
                 imageLoader.loadWithUrl(
                     "${image.path}.${image.extension}",
@@ -111,40 +118,55 @@ class CharacterDetailFragment : BaseFragment() {
             hero.urls?.let {
                 urlListAdapter =
                     getDynamicAdapter(getUrlListForAdapter(it).toMutableList(), onItemClick)
-                binding.rvUrlList.adapter = urlListAdapter
-                binding.rvUrlList.layoutManager = LinearLayoutManager(requireActivity())
+                binding.rvUrlList.apply {
+                    adapter = urlListAdapter
+                    layoutManager = LinearLayoutManager(requireActivity())
+                }
+                binding.clUrlListContainer.makeVisible()
             }
             hero.comics?.let {
                 comicsListAdapter = getDynamicAdapter(
                     getCommonResourceListForAdapter(it.items).toMutableList(),
                     onItemClick
                 )
-                binding.rvComicList.adapter = comicsListAdapter
-                binding.rvComicList.layoutManager = LinearLayoutManager(requireActivity())
+                binding.rvComicList.apply {
+                    adapter = comicsListAdapter
+                    layoutManager = LinearLayoutManager(requireActivity())
+                }
+                binding.clComicListcontainer.makeVisible()
             }
             hero.stories?.let {
                 storiesListAdapter = getDynamicAdapter(
                     getCommonResourceListForAdapter(it.items).toMutableList(),
                     onItemClick
                 )
-                binding.rvStoryList.adapter = storiesListAdapter
-                binding.rvStoryList.layoutManager = LinearLayoutManager(requireActivity())
+                binding.rvStoryList.apply {
+                    adapter = storiesListAdapter
+                    layoutManager = LinearLayoutManager(requireActivity())
+                }
+                binding.clStoryListcontainer.makeVisible()
             }
             hero.events?.let {
                 eventsListAdapter = getDynamicAdapter(
                     getCommonResourceListForAdapter(it.items).toMutableList(),
                     onItemClick
                 )
-                binding.rvEventList.adapter = eventsListAdapter
-                binding.rvEventList.layoutManager = LinearLayoutManager(requireActivity())
+                binding.rvEventList.apply {
+                    adapter = eventsListAdapter
+                    layoutManager = LinearLayoutManager(requireActivity())
+                }
+                binding.clEventListcontainer.makeVisible()
             }
             hero.series?.let {
                 seriesListAdapter = getDynamicAdapter(
                     getCommonResourceListForAdapter(it.items).toMutableList(),
                     onItemClick
                 )
-                binding.rvSeriesList.adapter = seriesListAdapter
-                binding.rvSeriesList.layoutManager = LinearLayoutManager(requireActivity())
+                binding.rvSeriesList.apply {
+                    adapter = seriesListAdapter
+                    layoutManager = LinearLayoutManager(requireActivity())
+                }
+                binding.clSeriesListcontainer.makeVisible()
             }
         }
     }
