@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -81,6 +82,11 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
 
     override fun loadData() {
         characterViewModel.getHeroList(requestOffsetPref)
+        lifecycleScope.launchWhenCreated {
+            characterViewModel.heroListFlow.collect {
+                requireActivity().toastShort("FLOW!")
+            }
+        }
     }
 
     // Dynamic Adapter

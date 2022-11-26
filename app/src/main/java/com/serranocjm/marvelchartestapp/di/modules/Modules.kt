@@ -6,6 +6,7 @@ import com.serranocjm.marvelchartestapp.network.interceptor.RequestInterceptor
 import com.serranocjm.marvelchartestapp.network.interceptor.RequestInterceptorImpl
 import com.serranocjm.marvelchartestapp.repository.CharacterRepository
 import com.serranocjm.marvelchartestapp.repository.CharacterRepositoryImpl
+import com.serranocjm.marvelchartestapp.repository.paging.HeroListPagingSource
 import com.serranocjm.marvelchartestapp.ui.viewmodel.CharacterViewModel
 import com.serranocjm.marvelchartestapp.utils.custom.ImageLoader
 import org.koin.android.ext.koin.androidContext
@@ -24,6 +25,7 @@ val dataModule = module {
 
 val repositoryModule = module {
     // Initialize repository-related classes
+    factory { HeroListPagingSource() }
     factory<CharacterRepository> { CharacterRepositoryImpl() }
 }
 

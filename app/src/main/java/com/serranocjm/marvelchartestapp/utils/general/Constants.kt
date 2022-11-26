@@ -2,6 +2,7 @@ package com.serranocjm.marvelchartestapp.utils.general
 
 object Constants {
     const val API_QUERY_LIMIT = 20
+    const val API_OFFSET_SIZE = 20
 
     const val STORY_INTERIOR = "interiorStory"
     const val STORY_COVER = "cover"
