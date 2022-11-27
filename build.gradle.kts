@@ -23,3 +23,10 @@ buildscript {
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
+
+tasks.withType<Test> {
+    /**
+     * fix for retrofit https://github.com/square/retrofit/issues/3341
+     */
+    jvmArgs = listOf("--add-opens", "java.base/java.lang.invoke=ALL-UNNAMED")
+}
