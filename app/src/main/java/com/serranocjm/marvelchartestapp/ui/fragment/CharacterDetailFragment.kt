@@ -84,7 +84,6 @@ class CharacterDetailFragment : BaseFragment() {
             requireActivity().toastLong(it)
         }
         loadingState.observe(viewLifecycleOwner) {
-            Log.d("TAGTAG", "Loading...")
         }
         heroDetail.observe(viewLifecycleOwner) {
             characterDetail = it
