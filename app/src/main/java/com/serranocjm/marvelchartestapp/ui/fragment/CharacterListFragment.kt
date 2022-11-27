@@ -19,6 +19,7 @@ import com.serranocjm.marvelchartestapp.ui.adapter.custom.paging.RetryStateLoade
 import com.serranocjm.marvelchartestapp.ui.adapter.item.model.HeroItemModel
 import com.serranocjm.marvelchartestapp.ui.adapter.type.factory.HeroTypeFactoryImpl
 import com.serranocjm.marvelchartestapp.ui.viewmodel.CharacterViewModel
+import com.serranocjm.marvelchartestapp.utils.general.toastLong
 import com.serranocjm.marvelchartestapp.utils.general.toastShort
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -89,7 +90,6 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
         // characterViewModel.getHeroList(requestOffsetPref)
         lifecycleScope.launchWhenCreated {
             characterViewModel.heroListFlow.collect {
-                requireActivity().toastShort("FLOW! $it")
                 heroPagingAdapter.submitData(it)
             }
         }
@@ -109,6 +109,9 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
             heroPagingAdapter.loadStateFlow.collect {
                 val state = it.refresh
                 binding.clLoading.isVisible = state is LoadState.Loading
+                if (state is LoadState.Error) {
+                    requireActivity().toastLong("${state.error.message}")
+                }
             }
         }
     }
