@@ -31,11 +31,6 @@ class HeroListPagingAdapter(
         return typeFactory.holder(p1, view, imageLoader) as DynamicAdapterViewHolder<HeroItemModel>
     }
 
-    fun setCallback(callback: DiffUtil.ItemCallback<HeroItemModel>) {
-        mDiffCallback = callback
-        mDiffer = AsyncListDiffer(this, mDiffCallback!!)
-    }
-
     override fun getItemViewType(position: Int): Int {
         return getItem(position)?.type(typeFactory) ?: 0
     }

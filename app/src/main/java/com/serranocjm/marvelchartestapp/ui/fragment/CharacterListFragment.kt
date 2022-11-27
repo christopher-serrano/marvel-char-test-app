@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -19,7 +20,6 @@ import com.serranocjm.marvelchartestapp.ui.adapter.item.model.HeroItemModel
 import com.serranocjm.marvelchartestapp.ui.adapter.type.factory.HeroTypeFactoryImpl
 import com.serranocjm.marvelchartestapp.ui.viewmodel.CharacterViewModel
 import com.serranocjm.marvelchartestapp.utils.general.toastShort
-import com.serranocjm.marvelchartestapp.utils.general.toggleVisibility
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -108,7 +108,7 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
         lifecycleScope.launchWhenCreated {
             heroPagingAdapter.loadStateFlow.collect {
                 val state = it.refresh
-                binding.pbLoader.toggleVisibility(state is LoadState.Loading)
+                binding.pbLoader.isVisible = state is LoadState.Loading
             }
         }
     }
