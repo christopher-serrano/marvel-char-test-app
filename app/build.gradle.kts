@@ -77,6 +77,7 @@ dependencies {
     testImplementation("org.mockito:mockito-inline:4.5.1")
     testImplementation("com.linkedin.dexmaker:dexmaker-mockito:2.28.1")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
+    testImplementation("org.mockito:mockito-inline:4.5.1")
 
     // Mock retrofit for test
     testImplementation("com.squareup.okhttp3:mockwebserver:5.0.0-alpha.7")
