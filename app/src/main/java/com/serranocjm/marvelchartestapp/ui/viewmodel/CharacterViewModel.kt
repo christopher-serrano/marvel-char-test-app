@@ -44,11 +44,11 @@ class CharacterViewModel : BaseViewModel(), KoinComponent {
     // Async get hero list
     private suspend fun getHeroListAsync(offset: Int) {
         val result = kotlin.runCatching {
-            showLoading()
+            loadingState.postValue(true)
             characterRepository.getCharacterList(offset)
         }
         with(result) {
-            dismissLoading()
+            loadingState.postValue(false)
             onSuccess {
                 heroList.postValue(it)
             }

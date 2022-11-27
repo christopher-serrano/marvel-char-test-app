@@ -108,7 +108,7 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
         lifecycleScope.launchWhenCreated {
             heroPagingAdapter.loadStateFlow.collect {
                 val state = it.refresh
-                binding.pbLoader.isVisible = state is LoadState.Loading
+                binding.clLoading.isVisible = state is LoadState.Loading
             }
         }
     }

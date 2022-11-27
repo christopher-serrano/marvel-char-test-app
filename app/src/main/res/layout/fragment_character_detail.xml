@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,268 +7,297 @@
     android:nestedScrollingEnabled="true"
     tools:context=".ui.fragment.CharacterDetailFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:nestedScrollingEnabled="true">
 
-        <LinearLayout
-            android:id="@+id/llTitleContainer"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tvHeroName"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/dimen_8"
+            <LinearLayout
+                android:id="@+id/llTitleContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tvHeroName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dimen_8"
+                    android:layout_marginTop="@dimen/dimen_8"
+                    android:layout_marginEnd="@dimen/dimen_8"
+                    android:layout_marginBottom="@dimen/dimen_8"
+                    android:text="@string/hero_name_title"
+                    android:textSize="@dimen/text_size_18" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivHeroThumbnail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/dimen_16"
                 android:layout_marginTop="@dimen/dimen_8"
-                android:layout_marginEnd="@dimen/dimen_8"
+                android:layout_marginEnd="@dimen/dimen_16"
                 android:layout_marginBottom="@dimen/dimen_8"
-                android:text="@string/hero_name_title"
-                android:textSize="@dimen/text_size_18" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/ivHeroThumbnail"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/dimen_16"
-            android:layout_marginTop="@dimen/dimen_8"
-            android:layout_marginEnd="@dimen/dimen_16"
-            android:layout_marginBottom="@dimen/dimen_8"
-            android:contentDescription="@string/hero_img_attr"
-            android:src="@drawable/ic_hero_placeholder"
-            app:layout_constraintDimensionRatio="1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llTitleContainer"
-            app:layout_constraintWidth_percent="0.50" />
-
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_8"
-            android:layout_marginTop="@dimen/dimen_4"
-            android:layout_marginEnd="@dimen/dimen_8"
-            android:layout_marginBottom="@dimen/dimen_4"
-            android:text="@string/lorem_ipsum_1"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/vThumbnailSeparator"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivHeroThumbnail" />
-
-        <View
-            android:id="@+id/vThumbnailSeparator"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/dimen_8"
-            android:layout_marginBottom="@dimen/dimen_4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvDescription" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clUrlListContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_4"
-            android:layout_marginBottom="@dimen/dimen_4"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vThumbnailSeparator">
+                android:contentDescription="@string/hero_img_attr"
+                android:src="@drawable/ic_hero_placeholder"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llTitleContainer"
+                app:layout_constraintWidth_percent="0.50" />
 
             <TextView
-                android:id="@+id/tvUrlLabel"
+                android:id="@+id/tvDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_8"
                 android:layout_marginTop="@dimen/dimen_4"
                 android:layout_marginEnd="@dimen/dimen_8"
                 android:layout_marginBottom="@dimen/dimen_4"
-                android:text="URl List"
+                android:text="@string/lorem_ipsum_1"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/vThumbnailSeparator"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/ivHeroThumbnail" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvUrlList"
+            <View
+                android:id="@+id/vThumbnailSeparator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:layout_marginBottom="@dimen/dimen_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clUrlListContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:overScrollMode="never"
-                android:paddingStart="@dimen/dimen_16"
-                android:paddingEnd="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_marginBottom="@dimen/dimen_4"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvUrlLabel"
-                tools:listitem="@layout/item_url" />
+                app:layout_constraintTop_toBottomOf="@id/vThumbnailSeparator">
+
+                <TextView
+                    android:id="@+id/tvUrlLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_8"
+                    android:layout_marginTop="@dimen/dimen_4"
+                    android:layout_marginEnd="@dimen/dimen_8"
+                    android:layout_marginBottom="@dimen/dimen_4"
+                    android:text="URl List"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvUrlList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
+                    android:paddingStart="@dimen/dimen_16"
+                    android:paddingEnd="@dimen/dimen_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUrlLabel"
+                    tools:listitem="@layout/item_url" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clComicListcontainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_marginBottom="@dimen/dimen_4"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clUrlListContainer">
+
+                <TextView
+                    android:id="@+id/tvComicLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_8"
+                    android:layout_marginTop="@dimen/dimen_4"
+                    android:layout_marginEnd="@dimen/dimen_8"
+                    android:layout_marginBottom="@dimen/dimen_4"
+                    android:text="Comics:"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvComicList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
+                    android:paddingStart="@dimen/dimen_16"
+                    android:paddingEnd="@dimen/dimen_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvComicLabel"
+                    tools:listitem="@layout/item_common_resource" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clStoryListcontainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_marginBottom="@dimen/dimen_4"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clComicListcontainer">
+
+                <TextView
+                    android:id="@+id/tvStoriesLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_8"
+                    android:layout_marginTop="@dimen/dimen_4"
+                    android:layout_marginEnd="@dimen/dimen_8"
+                    android:layout_marginBottom="@dimen/dimen_4"
+                    android:text="Stories:"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvStoryList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
+                    android:paddingStart="@dimen/dimen_16"
+                    android:paddingEnd="@dimen/dimen_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvStoriesLabel"
+                    tools:listitem="@layout/item_common_resource" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clEventListcontainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_marginBottom="@dimen/dimen_4"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clStoryListcontainer">
+
+                <TextView
+                    android:id="@+id/tvEventsLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_8"
+                    android:layout_marginTop="@dimen/dimen_4"
+                    android:layout_marginEnd="@dimen/dimen_8"
+                    android:layout_marginBottom="@dimen/dimen_4"
+                    android:text="Stories:"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvEventList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
+                    android:paddingStart="@dimen/dimen_16"
+                    android:paddingEnd="@dimen/dimen_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvEventsLabel"
+                    tools:listitem="@layout/item_common_resource" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clSeriesListcontainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_marginBottom="@dimen/dimen_4"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clEventListcontainer">
+
+                <TextView
+                    android:id="@+id/tvSeriesLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_8"
+                    android:layout_marginTop="@dimen/dimen_4"
+                    android:layout_marginEnd="@dimen/dimen_8"
+                    android:layout_marginBottom="@dimen/dimen_4"
+                    android:text="Series:"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSeriesList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
+                    android:paddingStart="@dimen/dimen_16"
+                    android:paddingEnd="@dimen/dimen_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSeriesLabel"
+                    tools:listitem="@layout/item_common_resource" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clComicListcontainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_4"
-            android:layout_marginBottom="@dimen/dimen_4"
-            android:visibility="gone"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/opaque"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:id="@+id/pbLoadRetry"
+            android:layout_width="@dimen/dimen_32"
+            android:layout_height="@dimen/dimen_32"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:padding="@dimen/dimen_3"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/clUrlListContainer">
-
-            <TextView
-                android:id="@+id/tvComicLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_8"
-                android:layout_marginTop="@dimen/dimen_4"
-                android:layout_marginEnd="@dimen/dimen_8"
-                android:layout_marginBottom="@dimen/dimen_4"
-                android:text="Comics:"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvComicList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:overScrollMode="never"
-                android:paddingStart="@dimen/dimen_16"
-                android:paddingEnd="@dimen/dimen_16"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvComicLabel"
-                tools:listitem="@layout/item_common_resource" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clStoryListcontainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_4"
-            android:layout_marginBottom="@dimen/dimen_4"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/clComicListcontainer">
-
-            <TextView
-                android:id="@+id/tvStoriesLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_8"
-                android:layout_marginTop="@dimen/dimen_4"
-                android:layout_marginEnd="@dimen/dimen_8"
-                android:layout_marginBottom="@dimen/dimen_4"
-                android:text="Stories:"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvStoryList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:overScrollMode="never"
-                android:paddingStart="@dimen/dimen_16"
-                android:paddingEnd="@dimen/dimen_16"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvStoriesLabel"
-                tools:listitem="@layout/item_common_resource" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clEventListcontainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_4"
-            android:layout_marginBottom="@dimen/dimen_4"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/clStoryListcontainer">
-
-            <TextView
-                android:id="@+id/tvEventsLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_8"
-                android:layout_marginTop="@dimen/dimen_4"
-                android:layout_marginEnd="@dimen/dimen_8"
-                android:layout_marginBottom="@dimen/dimen_4"
-                android:text="Stories:"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvEventList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:overScrollMode="never"
-                android:paddingStart="@dimen/dimen_16"
-                android:paddingEnd="@dimen/dimen_16"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvEventsLabel"
-                tools:listitem="@layout/item_common_resource" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clSeriesListcontainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_4"
-            android:layout_marginBottom="@dimen/dimen_4"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/clEventListcontainer">
-
-            <TextView
-                android:id="@+id/tvSeriesLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_8"
-                android:layout_marginTop="@dimen/dimen_4"
-                android:layout_marginEnd="@dimen/dimen_8"
-                android:layout_marginBottom="@dimen/dimen_4"
-                android:text="Series:"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvSeriesList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:overScrollMode="never"
-                android:paddingStart="@dimen/dimen_16"
-                android:paddingEnd="@dimen/dimen_16"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvSeriesLabel"
-                tools:listitem="@layout/item_common_resource" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

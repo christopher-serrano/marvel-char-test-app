@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.serranocjm.marvelchartestapp.R
@@ -84,6 +85,7 @@ class CharacterDetailFragment : BaseFragment() {
             requireActivity().toastLong(it)
         }
         loadingState.observe(viewLifecycleOwner) {
+            binding.clLoading.isVisible = it
         }
         heroDetail.observe(viewLifecycleOwner) {
             characterDetail = it
