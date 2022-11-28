@@ -1,6 +1,5 @@
 package com.serranocjm.marvelchartestapp.data.model.error
 
-
 import com.google.gson.annotations.SerializedName
 
 data class ResponseError(

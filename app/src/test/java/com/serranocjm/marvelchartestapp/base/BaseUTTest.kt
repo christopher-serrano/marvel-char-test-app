@@ -60,11 +60,6 @@ abstract class BaseUTTest : KoinTest {
     fun getMockWebServerUrl() = mMockServerInstance.url("/").toString()
 
     /**
-     * Get MockWebServer instance
-     */
-    fun getMockWebServer() = mMockServerInstance
-
-    /**
      * Stop Mockwebserver
      */
     private fun stopMockServer() {

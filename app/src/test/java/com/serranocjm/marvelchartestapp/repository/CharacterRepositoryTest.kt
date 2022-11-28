@@ -13,7 +13,6 @@ import com.serranocjm.marvelchartestapp.utils.API_QUERY_LIMIT
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
-import mockwebserver3.MockResponse
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
@@ -123,15 +122,8 @@ class CharacterRepositoryTest : KoinTest, BaseUTTest() {
         // Mock network classes
         val endpointsMock = mock(Endpoints::class.java)
 
-        // Get mock web server
-        val mockServer = getMockWebServer()
-
         // Enqueue call and set response
-        mockServer.enqueue(
-            MockResponse()
-                .setResponseCode(404)
-                .setBody(getJson("404_response.json"))
-        )
+        mockNetworkResponseWithFileContent("404_response.json", 404)
 
         // Verify response and assert
         verify(1) { endpointsMock.getCharacterDetail(characterId) }
@@ -150,15 +142,8 @@ class CharacterRepositoryTest : KoinTest, BaseUTTest() {
         // Mock network classes
         val endpointsMock = mock(Endpoints::class.java)
 
-        // Get mock web server
-        val mockServer = getMockWebServer()
-
         // Enqueue call and set response
-        mockServer.enqueue(
-            MockResponse()
-                .setResponseCode(409)
-                .setBody(getJson("409_generic.json"))
-        )
+        mockNetworkResponseWithFileContent("409_generic.json", 409)
 
         // Verify response and assert
         verify(1) { endpointsMock.getCharacterDetail(characterId) }
