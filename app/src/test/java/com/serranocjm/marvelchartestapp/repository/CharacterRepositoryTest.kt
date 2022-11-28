@@ -8,10 +8,8 @@ import com.serranocjm.marvelchartestapp.data.model.wrappers.CharacterDataWrapper
 import com.serranocjm.marvelchartestapp.di.modules.networkModule
 import com.serranocjm.marvelchartestapp.di.modules.repositoryModule
 import com.serranocjm.marvelchartestapp.network.api.Endpoints
-import com.serranocjm.marvelchartestapp.utils.API_OFFSET_SIZE
+import com.serranocjm.marvelchartestapp.utils.API_OFFSET
 import com.serranocjm.marvelchartestapp.utils.API_QUERY_LIMIT
-import com.serranocjm.marvelchartestapp.utils.CODE_GENERIC_ERROR
-import com.serranocjm.marvelchartestapp.utils.CODE_NOT_FOUND
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
@@ -42,8 +40,12 @@ class CharacterRepositoryTest : KoinTest, BaseUTTest() {
         }
     }
 
+    /**
+     * Testing with live api data
+     */
+
     @Test
-    fun getCharacterListTest() = runTest(UnconfinedTestDispatcher()) {
+    fun get_character_list_retrofit_test() = runTest(UnconfinedTestDispatcher()) {
         // Mock network classes
         val endpointsMock = mock(Endpoints::class.java)
 
@@ -54,25 +56,25 @@ class CharacterRepositoryTest : KoinTest, BaseUTTest() {
         val characterRepositoryMock = CharacterRepositoryImpl()
 
         // Test api call
-        `when`(endpointsMock.getCharacterList(API_QUERY_LIMIT, API_OFFSET_SIZE)).thenReturn(
+        `when`(endpointsMock.getCharacterList(API_QUERY_LIMIT, API_OFFSET)).thenReturn(
             Response.success(characterDataWrapperMock)
         )
 
         // Assert the response is successful
-        val characterListResponse = endpointsMock.getCharacterList(API_QUERY_LIMIT, API_OFFSET_SIZE)
+        val characterListResponse = endpointsMock.getCharacterList(API_QUERY_LIMIT, API_OFFSET)
 
         // Then
         assertThat(characterListResponse.isSuccessful, `is`(true))
 
         // Assert the resulting data is not an empty or null list
-        val characterList = characterRepositoryMock.getCharacterList(API_OFFSET_SIZE)
+        val characterList = characterRepositoryMock.getCharacterList(API_OFFSET)
 
         // Then
         assert(!characterList.isNullOrEmpty())
     }
 
     @Test
-    fun getCharacterDetailSuccessTest() = runTest(UnconfinedTestDispatcher()) {
+    fun get_character_detail_retrofit_test() = runTest(UnconfinedTestDispatcher()) {
         // Parameter values
         val characterId = 1011334
 
@@ -103,8 +105,14 @@ class CharacterRepositoryTest : KoinTest, BaseUTTest() {
         assertNotNull(character)
     }
 
+    /**
+     * Testing the exceptions with a mock server since the current MVVM pattern used doesn't
+     * encapsulate the server error response, it simply captures the exception and extracts the
+     * Retrofit error message
+     */
+
     @Test
-    fun retrofitNotFoundExceptionTest() = runTest(UnconfinedTestDispatcher()) {
+    fun character_not_found_mock_server_test() = runTest(UnconfinedTestDispatcher()) {
         // Parameter values
         val characterId = 1
 
@@ -121,16 +129,17 @@ class CharacterRepositoryTest : KoinTest, BaseUTTest() {
         // Enqueue call and set response
         mockServer.enqueue(
             MockResponse()
-                .setResponseCode(CODE_NOT_FOUND)
+                .setResponseCode(404)
                 .setBody(getJson("404_response.json"))
         )
 
+        // Verify response and assert
         verify(1) { endpointsMock.getCharacterDetail(characterId) }
         assertEquals(responseErrorMock.code, retrofitResponseMock.code())
     }
 
     @Test
-    fun retrofitMissingParameterExceptionTest() = runTest(UnconfinedTestDispatcher()) {
+    fun other_exception_mock_server_test() = runTest(UnconfinedTestDispatcher()) {
         // Parameter values
         val characterId = 0
 
@@ -147,10 +156,11 @@ class CharacterRepositoryTest : KoinTest, BaseUTTest() {
         // Enqueue call and set response
         mockServer.enqueue(
             MockResponse()
-                .setResponseCode(CODE_GENERIC_ERROR)
+                .setResponseCode(409)
                 .setBody(getJson("409_generic.json"))
         )
 
+        // Verify response and assert
         verify(1) { endpointsMock.getCharacterDetail(characterId) }
         assertEquals(responseErrorMock.code, retrofitResponseMock.code())
     }
