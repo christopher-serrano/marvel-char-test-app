@@ -1,3 +1,0 @@
-package com.serranocjm.marvelchartestapp.network.interceptor
-
-interface ConnectivityInterceptor
