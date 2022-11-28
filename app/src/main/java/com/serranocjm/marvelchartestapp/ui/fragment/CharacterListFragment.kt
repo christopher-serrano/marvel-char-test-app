@@ -20,7 +20,6 @@ import com.serranocjm.marvelchartestapp.ui.adapter.item.model.HeroItemModel
 import com.serranocjm.marvelchartestapp.ui.adapter.type.factory.HeroTypeFactoryImpl
 import com.serranocjm.marvelchartestapp.ui.viewmodel.CharacterViewModel
 import com.serranocjm.marvelchartestapp.utils.general.toastLong
-import com.serranocjm.marvelchartestapp.utils.general.toastShort
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -134,7 +133,6 @@ class CharacterListFragment : BaseFragment(), KoinComponent {
 
         when (action) {
             "goto_hero_detail" -> {
-                requireActivity().toastShort("${hero.model.id} - ${hero.model.name}")
                 hero.model.id?.let {
                     navController.navigate(
                         CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailFragment(
